@@ -1,0 +1,12 @@
+export FLASK_APP=app.py
+export FLASK_RUN_PORT=5010
+export FLASK_ENV=development
+flask run
+
+
+
+pip install -r requirements.txt --user
+
+py -3.8 -m pip install cachetools
+
+@cached(cache=TTLCache(maxsize=int(environ["CACHE_COUPONS_MAX_SIZE"]), ttl=int(environ["CACHE_COUPONS_TTL_SECONDS"])))
