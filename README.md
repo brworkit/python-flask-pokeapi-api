@@ -1,8 +1,9 @@
 # Pokeapi Wrapper Python
 
-![Pokeapi](https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png)
-![Pokeapi](https://img1.gratispng.com/20171220/ofe/pokeball-png-5a3ab8044b97e7.8086813315137976363096.jpg)
+<!-- ![Pokeapi](https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png) -->
+<!-- ![Pokeapi](https://img1.gratispng.com/20171220/ofe/pokeball-png-5a3ab8044b97e7.8086813315137976363096.jpg) -->
 
+<a href="https://pokeapi.co/"><img src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png" title="PokeApi" alt="PokeApi"></a>
 
 <!-- <a href="http://fvcproductions.com"><img src="https://avatars1.githubusercontent.com/u/4284691?v=3&s=200" title="FVCproductions" alt="FVCproductions"></a> -->
 
@@ -45,6 +46,7 @@ After running these commands you will see in your prompt
 
 
 ## API
+
 ### GET /pokemons/<id>
     {
         "result": {
@@ -69,6 +71,7 @@ After running these commands you will see in your prompt
             ]
         }
     }
+
 ### GET /pokemons/<id>/sprites
     {
         "result": {
@@ -79,7 +82,8 @@ After running these commands you will see in your prompt
         }
     }
 
-
+## Contributing
+[PokeApi](https://pokeapi.co/) with their awesome set of data.  
 
 ## License
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
