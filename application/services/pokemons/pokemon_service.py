@@ -1,45 +1,34 @@
-import requests
 from os import environ
-from http import HTTPStatus
-from cachetools import cached, TTLCache
-from application.utils import log, json, constants
+from application.lib import pokeapi
+
 
 class PokemonService(object):
     def __init__(self):
         pass
-    
-    @cached(cache=TTLCache(maxsize=int(environ["CACHE_MAX_SIZE"]), ttl=int(environ["CACHE_TTL_SECONDS"])))
-    def assets(self, id):
-        url = environ["PATH_POKEMON"].format(id)
-        response = requests.get(url)
-        result = json.to_json(response.text)["sprites"]
 
+    def sprites(self, id):
+        result = pokeapi.pokemons(id)["sprites"]
         for field in dict(result):
             if result[field] is None:
                 del result[field]
         return result
 
-    @cached(cache=TTLCache(maxsize=int(environ["CACHE_MAX_SIZE"]), ttl=int(environ["CACHE_TTL_SECONDS"])))
     def essentials(self, id):
-        url = environ["PATH_POKEMON"].format(id)
-        response = requests.get(url,timeout=10)
-        result = json.to_json(response.text)
+        result = pokeapi.pokemons(id)
         return self.extract_essentials(result)
 
-    @cached(cache=TTLCache(maxsize=int(environ["CACHE_MAX_SIZE"]), ttl=int(environ["CACHE_TTL_SECONDS"])))
     def essentials_range(self, _from, _to):
         result = []
         start_id = _from
         end_id = _to + 1
-        for id in range(start_id, end_id):
-            print(f"id: {id}")
-            result.append(self.essentials(id))         
+        for id in range(start_id, end_id):            
+            result.append(self.essentials(id))
         return result
 
-    def default_image(self, id):        
-        return self.assets(id)["front_default"]
+    def default_image(self, id):
+        return self.sprites(id)["front_default"]
 
-    def extract_essentials(self, _input):        
+    def extract_essentials(self, _input):
         return {
             "id": _input["id"],
             "order": _input["order"],
@@ -49,33 +38,29 @@ class PokemonService(object):
             "base_experience": _input["base_experience"],
             "types": self.extract_types(_input),
             "color": self.find_pokemon_color(_input["id"]),
-            "image":self.default_image(_input["id"])
+            "image": self.default_image(_input["id"])
         }
 
     def extract_types(self, _input):
-        print("extract_types")
         types = _input["types"]
-        print(f"types: {types}")
-
         result = []
         for item in types:
             try:
-                type_name = item["type"]["name"]
-                result.append({"name": type_name, "color": self.define_color_type(type_name)})
+                result.append(self.build_type(item))
             except Exception as e:
-                print(f"exception: {e}")            
-        return  result
+                print(f"exception: {e}")
+        return result
 
-    @cached(cache=TTLCache(maxsize=int(environ["CACHE_MAX_SIZE"]), ttl=int(environ["CACHE_TTL_SECONDS"])))
+    def build_type(self, item):
+        type_name = item["type"]["name"]
+        return {"name": type_name, "color": self.define_color_type(type_name)}
+
     def find_pokemon_color(self, id):
-        url = environ["PATH_POKEMON_COLORS"].format(id)
         try:
-            response = requests.get(url)
-            return json.to_json(response.text)["name"]
+            return pokeapi.pokemons_color(id)["name"]
         except Exception as e:
             return self.define_pokemon_color(id)
-        
-    @cached(cache=TTLCache(maxsize=int(environ["CACHE_MAX_SIZE"]), ttl=int(environ["CACHE_TTL_SECONDS"])))
+
     def define_color_type(self, type_name):
         switch = {
             "grass": "green",
@@ -84,30 +69,11 @@ class PokemonService(object):
         }
         return switch.get(type_name, "black")
 
-    @cached(cache=TTLCache(maxsize=int(environ["CACHE_MAX_SIZE"]), ttl=int(environ["CACHE_TTL_SECONDS"])))
     def define_pokemon_color(self, id):
         switch = {
             11: "light_green"
         }
         return switch.get(id, "black")
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     #         {
@@ -141,5 +107,5 @@ class PokemonService(object):
         #         "name": "bulbasaur",
         #         "url": "https://pokeapi.co/api/v2/pokemon-species/1/"
         #     },
-        #    
+        #
         # }

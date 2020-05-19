@@ -2,25 +2,3 @@ export FLASK_APP=app.py
 export FLASK_RUN_PORT=5010
 export FLASK_ENV=development
 flask run
-
-
-
-pip install -r requirements.txt --user
-
-py -3.8 -m pip install cachetools
-
-@cached(cache=TTLCache(maxsize=int(environ["CACHE_MAX_SIZE"]), ttl=int(environ["CACHE_TTL_SECONDS"])))
-
-
-
-Flask==1.0.3
-Flask-PyMongo==2.3.0
-requests==2.20.1
-python-dotenv==0.10.1
-python-dateutil==2.7.5
-flask-cors==3.0.7
-cachetools==4.0.0
-pymongo==3.10.0
-Flask-JWT-Extended==3.24.1
-passlib>=1.7.2
-uwsgi
