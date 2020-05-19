@@ -1,6 +1,9 @@
 # Pokeapi Wrapper Python
 
-![Web Application](https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png)
+![Pokeapi](https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png)
+![Pokeapi](https://img1.gratispng.com/20171220/ofe/pokeball-png-5a3ab8044b97e7.8086813315137976363096.jpg)
+
+
 <!-- <a href="http://fvcproductions.com"><img src="https://avatars1.githubusercontent.com/u/4284691?v=3&s=200" title="FVCproductions" alt="FVCproductions"></a> -->
 
 ## Description
