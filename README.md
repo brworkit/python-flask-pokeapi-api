@@ -47,7 +47,7 @@ After running these commands you will see in your prompt
 
 ## API
 
-### GET /pokemons/<id>
+### GET /pokemons/{id}
     {
         "result": {
             "id"
@@ -72,7 +72,7 @@ After running these commands you will see in your prompt
         }
     }
 
-### GET /pokemons/<id>/sprites
+### GET /pokemons/{id}/sprites
     {
         "result": {
             "back_default"
