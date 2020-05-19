@@ -1,6 +1,15 @@
 from os import environ
 from application.lib import pokeapi
 
+POKEMON_COLORS = {
+    11: "light_green"
+}
+
+POKEMONS_TYPES_COLOR = {
+    "grass": "green",
+    "poison": "purple",
+    "bug": "light_green"
+}
 
 class PokemonService(object):
     def __init__(self):
@@ -21,7 +30,7 @@ class PokemonService(object):
         result = []
         start_id = _from
         end_id = _to + 1
-        for id in range(start_id, end_id):            
+        for id in range(start_id, end_id):
             result.append(self.essentials(id))
         return result
 
@@ -34,11 +43,12 @@ class PokemonService(object):
             "order": _input["order"],
             "name": _input["name"],
             "weight": _input["weight"],
-            "height": _input["height"],
-            "base_experience": _input["base_experience"],
-            "types": self.extract_types(_input),
+            "height": _input["height"],            
             "color": self.find_pokemon_color(_input["id"]),
-            "image": self.default_image(_input["id"])
+            "base_experience": _input["base_experience"],
+            "image": self.default_image(_input["id"]),
+            "types": self.extract_types(_input),
+            "abilities": self.extract_habilities(_input),
         }
 
     def extract_types(self, _input):
@@ -49,6 +59,14 @@ class PokemonService(object):
                 result.append(self.build_type(item))
             except Exception as e:
                 print(f"exception: {e}")
+        return result
+
+    def extract_habilities(self, _input):
+        abilities = _input["abilities"]
+        result = []
+        for item in abilities:
+            print(f"hability: {item}")
+            result.append({"name": item["ability"]["name"]})
         return result
 
     def build_type(self, item):
@@ -62,50 +80,7 @@ class PokemonService(object):
             return self.define_pokemon_color(id)
 
     def define_color_type(self, type_name):
-        switch = {
-            "grass": "green",
-            "poison": "purple",
-            "bug": "light_green"
-        }
-        return switch.get(type_name, "black")
+        return POKEMONS_TYPES_COLOR.get(type_name, "black")
 
     def define_pokemon_color(self, id):
-        switch = {
-            11: "light_green"
-        }
-        return switch.get(id, "black")
-
-
-    #         {
-        #     "abilities": [
-        #         {
-        #             "ability": {
-        #                 "name": "chlorophyll",
-        #                 "url": "https://pokeapi.co/api/v2/ability/34/"
-        #             },
-        #             "is_hidden": true,
-        #             "slot": 3
-        #         },
-        #         {
-        #             "ability": {
-        #                 "name": "overgrow",
-        #                 "url": "https://pokeapi.co/api/v2/ability/65/"
-        #             },
-        #             "is_hidden": false,
-        #             "slot": 1
-        #         }
-        #     ],
-        #     "base_experience": 64,
-        #     "height": 7,
-        #     "held_items": [],
-        #     "id": 1,
-        #     "is_default": true,
-        #     "location_area_encounters": "https://pokeapi.co/api/v2/pokemon/1/encounters",
-        #     "name": "bulbasaur",
-        #     "order": 1,
-        #     "species": {
-        #         "name": "bulbasaur",
-        #         "url": "https://pokeapi.co/api/v2/pokemon-species/1/"
-        #     },
-        #
-        # }
+        return POKEMON_COLORS.get(id, "black")
