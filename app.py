@@ -4,7 +4,6 @@ from dotenv import load_dotenv
 from flask_cors import CORS
 from application.controllers.pokemons import pokemons_resource
 
-
 try:
     load_dotenv(verbose=False)
 except Exception as e:

@@ -3,7 +3,7 @@
 <a href="https://pokeapi.co/"><img src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png" title="PokeApi" alt="PokeApi"></a>
 
 ## Description
-A simple **Python** application using **Flask** that simplies the Pokeapi result set when you search for a Pokémon. 
+A simple **Python** application using **Flask** that simplies the **PokeApi** result set when you search for a Pokémon. 
 
 ## Requirements
 For development, you will need [Python](https://www.python.org/downloads/release/python-382/) installed in your environement and the modules that are included in the requirements.txt in the root path of the project. 
