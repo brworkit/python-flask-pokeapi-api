@@ -6,7 +6,7 @@
 A simple [**Python**](https://www.python.org/) application using [**Flask**](https://flask.palletsprojects.com/en/1.1.x/) that simplies the [**PokeApi**](https://pokeapi.co/) result set when you search for a Pokémon. 
 
 ## Requirements
-For development, you will need [Python](https://www.python.org/downloads/release/python-382/) installed in your environement and the modules that are included in the requirements.txt in the root path of the project. 
+For development, you will need [Python Installation](https://www.python.org/downloads/release/python-382/) installed in your environement and the modules that are included in the requirements.txt in the root path of the project. 
     
 ## Installation
 
