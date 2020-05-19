@@ -5,9 +5,6 @@
 ## Description
 A simple **Python** application using **Flask** that simplies the Pokeapi result set when you search for a Pokémon. 
 
-## Motivation
-I always loved pokémons and now my babies love them too, so I had to do something about it. 
-
 ## Requirements
 For development, you will need [Python](https://www.python.org/downloads/release/python-382/) installed in your environement and the modules that are included in the requirements.txt in the root path of the project. 
     
