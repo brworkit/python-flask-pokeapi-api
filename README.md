@@ -1,62 +1,91 @@
 # Pokeapi Wrapper Python
 
+<!-- ![Pokeapi](https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png) -->
+<!-- ![Pokeapi](https://img1.gratispng.com/20171220/ofe/pokeball-png-5a3ab8044b97e7.8086813315137976363096.jpg) -->
+
+<a href="https://pokeapi.co/"><img src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png" title="PokeApi" alt="PokeApi"></a>
+
+<!-- <a href="http://fvcproductions.com"><img src="https://avatars1.githubusercontent.com/u/4284691?v=3&s=200" title="FVCproductions" alt="FVCproductions"></a> -->
+
 ## Description
-A simple Python application using Flask that simplies the Pokeapi result set when you search for a Pokémon.
+A simple **Python** application using **Flask** that simplies the Pokeapi result set when you search for a Pokémon. 
+
+## Motivation
+I always loved pokémons and now my babies love them too, so I had to do something about it. 
 
 ## Requirements
-For development, you will only need [Apache Cordova](https://cordova.apache.org/), [Node JS](https://nodejs.org/) and [NPM](https://npmjs.org/), installed in your environement. 
-
-### Cordova
-
-- #### Node installation on your platform
-
-  Just go on [official Cordova setup](https://cordova.apache.org/docs/en/latest/guide/cli/index.html).
-
-### Node and NPM
-
-You can find more information about the installation on the [official Node.js website](https://nodejs.org/) and the [official NPM website](https://npmjs.org/).
-
-If the installation was successful, you should be able to run the following command from your command line:
-
-    $ node --version        
-
-    $ npm --version
+For development, you will need [Python](https://www.python.org/downloads/release/python-382/) installed in your environement and the modules that are included in the requirements.txt in the root path of the project. 
     
 ## Installation
 
 ### Project
-    $ git clone https://github.com/brworkit/cordova-socket-client.git
-    $ cd cordova-socket-client
-    $ npm install (to install the required modules)
+    $ git clone https://github.com/brworkit/pokeapi-wrapper-python.git
+    $ cd pokeapi-wrapper-python
+    $ pip install -r requirements.txt --user
     
 ## Usage
 
-Start the socket server you can clone [from this link](https://github.com/brworkit/socket-node-example.git) following the README instructions and run it locally.
+Start the server after everything is installed.
 
-## Run Cordova App
-
-Start Cordova App at browser using:
+## Run server locally
     
-    $ cordova run
+    $ export FLASK_APP=app.py _(setting the started file for running this application)_
+    $ export FLASK_RUN_PORT=8500 _(setting the port you want the server running)_
+    $ export FLASK_ENV=development _(setting the environment)_
+    $ flask run (really starts the server)
 
-Start Cordova App at Android device/emulator using:
-    
-    $ cordova run android
+After running these commands you will see in your prompt
 
-    **PS:** maybe locally in android device you will not see the timer because it wont be able to find your localhost. Soon I will make a setup of a live url to suport it.
+    * Serving Flask app "app.py" (lazy loading)
+    * Environment: development
+    * Debug mode: on
+    * Restarting with stat
+    * Debugger is active!
+    * Debugger PIN: 593-473-503
+    * Running on http://127.0.0.1:8500/ (Press CTRL+C to quit)
 
-## Wep Application
-    
-![Web Application](screenshot-web.png)
-    
-## Android Application Emulator
 
-![Web Application](screenshot-android-emulator.png)
+## API
 
-## Android Application Real Device
+### GET /pokemons/{id}
+    {
+        "result": {
+            "id"
+            "order"
+            "name":
+            "weight"
+            "height"
+            "color"
+            "base_experience"
+            "image"
+            "types": [
+                {
+                    "name"
+                    "color"
+                }
+            ],
+            "abilities": [
+                {
+                    "name"
+                }
+            ]
+        }
+    }
 
-![Web Application](screenshot-android-device.jpeg)
+### GET /pokemons/{id}/sprites
+    {
+        "result": {
+            "back_default"
+            "back_shiny"
+            "front_default"
+            "front_shiny"
+        }
+    }
+
+## Contributing
+[PokeApi](https://pokeapi.co/) with their awesome set of data.  
 
 ## License
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 [MIT License.](https://opensource.org/licenses/MIT)    
 Copyright (c) 2020 **brworkit**.
