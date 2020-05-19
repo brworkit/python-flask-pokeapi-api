@@ -82,6 +82,10 @@ After running these commands you will see in your prompt
         }
     }
 
+
+## POSTMAN
+You can import the **POKEAPI-WRAPPER-PYTHON-API.postman_collection.json** file into your postman to test the API. 
+
 ## Contributing
 [PokeApi](https://pokeapi.co/) with their awesome set of data.  
 
