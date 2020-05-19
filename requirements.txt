@@ -1,10 +1,5 @@
 Flask==1.0.3
-Flask-PyMongo==2.3.0
 requests==2.20.1
 python-dotenv==0.10.1
-python-dateutil==2.7.5
 flask-cors==3.0.7
 cachetools==4.0.0
-pymongo==3.10.0
-Flask-JWT-Extended==3.24.1
-passlib>=1.7.2
