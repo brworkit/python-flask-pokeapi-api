@@ -21,9 +21,9 @@ Start the server after everything is installed.
 
 ## Run server locally
     
-    $ export FLASK_APP=app.py _(setting the started file for running this application)_
-    $ export FLASK_RUN_PORT=8500 _(setting the port you want the server running)_
-    $ export FLASK_ENV=development _(setting the environment)_
+    $ export FLASK_APP=app.py (setting the started file for running this application)
+    $ export FLASK_RUN_PORT=8500 (setting the port you want the server running)
+    $ export FLASK_ENV=development (setting the environment)
     $ flask run (really starts the server)
 
 After running these commands you will see in your prompt
