@@ -8,4 +8,3 @@ cachetools==4.0.0
 pymongo==3.10.0
 Flask-JWT-Extended==3.24.1
 passlib>=1.7.2
-uwsgi

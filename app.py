@@ -2,7 +2,7 @@ from os import environ
 from flask import Flask
 from dotenv import load_dotenv
 from flask_cors import CORS
-from application.controllers.pokemons import assets_resource
+from application.controllers.pokemons import pokemons_resource
 
 from application.database.db import mongo
 from flask_jwt_extended import JWTManager
@@ -22,7 +22,7 @@ mongo.init_app(app)
 app.config['JWT_SECRET_KEY'] = environ["JWT_SECRET_KEY"]
 jwt = JWTManager(app)
 
-app.register_blueprint(assets_resource.blueprint, url_prefix=BASE_PATH_SERVER)
+app.register_blueprint(pokemons_resource.blueprint, url_prefix=BASE_PATH_SERVER)
 
 
 if __name__ == "__main__":
