@@ -1,5 +1,5 @@
 Flask==1.0.3
-requests==2.20.1
+requests==2.31.0
 python-dotenv==0.10.1
 flask-cors==3.0.9
 cachetools==4.0.0
